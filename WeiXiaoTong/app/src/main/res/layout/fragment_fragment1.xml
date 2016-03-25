@@ -5,7 +5,7 @@
     tools:context="com.xiaoku.show.Fragment1"
     android:background="@drawable/bg3">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <ListView
         android:background="#FFFFFF"
         android:id="@+id/lv1"

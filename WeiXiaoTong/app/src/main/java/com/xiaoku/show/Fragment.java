@@ -33,6 +33,13 @@ public class Fragment extends FragmentActivity implements View.OnClickListener {
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
+            case R.id.tx1:
+            android.support.v4.app.FragmentTransaction  ft3=fm.beginTransaction();
+           BabySpace bs=new BabySpace();
+            ft3.replace(R.id.fl, bs);
+            ft3.commit();
+            break;
+
             case R.id.tx4:
                 android.support.v4.app.FragmentTransaction  ft4=fm.beginTransaction();
                 SchoolNet sn=new SchoolNet();

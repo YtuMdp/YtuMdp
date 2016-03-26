@@ -135,6 +135,8 @@ public class SchoolNet extends Fragment {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View view=View.inflate(getActivity(),R.layout.gd_item,null);
+            //Toolbar toolbar=(Toolbar)view.findViewById(R.id.ab);
+
             ImageView imv=(ImageView)view.findViewById(R.id.ig);
             TextView txv=(TextView)view.findViewById(R.id.tx);
             imv.setImageResource(imageid[position]);

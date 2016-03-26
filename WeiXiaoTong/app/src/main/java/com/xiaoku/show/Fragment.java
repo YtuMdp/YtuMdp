@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.TextView;
 
+import com.xiaoku.weixiaotong.BabySpace;
 import com.xiaoku.weixiaotong.R;
 
 public class Fragment extends FragmentActivity implements View.OnClickListener {
@@ -27,13 +28,21 @@ public class Fragment extends FragmentActivity implements View.OnClickListener {
         tx3.setOnClickListener(this);
         tx4.setOnClickListener(this);
         tx5.setOnClickListener(this);
-
+        android.support.v4.app.FragmentTransaction  ft1=fm.beginTransaction();
+        BabySpace bs=new BabySpace();
+        ft1.replace(R.id.fl, bs);
+        ft1.commit();
 
     }
     public void onClick(View v) {
         // TODO Auto-generated method stub
         switch (v.getId()) {
-
+            case R.id.tx1:
+                android.support.v4.app.FragmentTransaction  ft1=fm.beginTransaction();
+                BabySpace bs=new BabySpace();
+                ft1.replace(R.id.fl, bs);
+                ft1.commit();
+                break;
 
             case R.id.tx4:
                 android.support.v4.app.FragmentTransaction  ft4=fm.beginTransaction();

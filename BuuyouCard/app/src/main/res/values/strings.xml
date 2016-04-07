@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">BuuyouCard</string>
+    <string name="phone">请输入已验证的手机号或邮箱</string>
+    <string name="pass">请输入密码</string>
+    <string name="forgetpass">忘记密码</string>
+</resources>

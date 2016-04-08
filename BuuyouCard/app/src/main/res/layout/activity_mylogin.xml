@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.buuyou.buuyoucard.Mylogin"
-    android:background="@mipmap/back"
+    android:background="@mipmap/logbac"
     android:orientation="vertical"
     >
     <!-- LOGO-->
@@ -42,14 +42,14 @@
 <ImageView
     android:layout_width="50dp"
     android:layout_height="45dp"
-    android:src="@mipmap/user"
+    android:src="@mipmap/loginuser"
     />
     <EditText
         android:id="@+id/phone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/shape"
-        android:hint="@string/pass"
+        android:hint="@string/phone"
         android:padding="10dp"
         android:textColor="@color/textcolor"
         />
@@ -65,17 +65,19 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="45dp"
-            android:src="@mipmap/user"
+            android:src="@mipmap/pass"
             />
         <EditText
             android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/shape"
             android:hint="@string/pass"
+            android:inputType="textPassword"
+           android:background="@drawable/shape"
             android:padding="10dp"
             android:textColor="@color/textcolor"
             />
+
     </LinearLayout>
     <!-- 登录按钮-->
     <LinearLayout
@@ -106,6 +108,7 @@
         android:src="@mipmap/forget"
         />
         <TextView
+            android:id="@+id/findpass"
             android:clickable="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

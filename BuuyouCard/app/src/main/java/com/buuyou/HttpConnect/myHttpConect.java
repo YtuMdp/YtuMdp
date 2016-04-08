@@ -15,7 +15,13 @@ public class myHttpConect {
 //传递URL
     public static String urlconnect(String myphone, String mypass) {
 
-        String url="http://app.buuyou.com/api/app?type=userlogin&data="+myphone+","+mypass;
+        String url=UrlPath.NET_API+UrlPath.loginType+UrlPath.data+myphone+","+mypass;
+        String urlresult=HttpResult(url);
+        return urlresult;
+    }
+    public static String urlconnect_pass(String email, String phone) {
+
+        String url=UrlPath.NET_API+UrlPath.passType+UrlPath.data+email+","+phone;
         String urlresult=HttpResult(url);
         return urlresult;
     }

@@ -3,6 +3,7 @@
     package="com.buuyou.buuyoucard">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -10,14 +11,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Mylogin">
+        <activity android:name="com.buuyou.main.Mylogin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.buuyou.HttpConnect.MainActivity"></activity>
+        <activity android:name="com.buuyou.main.findpassword"></activity>
+        <activity android:name="com.buuyou.main.securitycode"></activity>
+        <activity android:name="com.buuyou.main.changepassword"></activity>
+        <activity android:name="com.buuyou.fragment.BlankFragment"></activity>
     </application>
 
 </manifest>

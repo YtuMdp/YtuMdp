@@ -22,7 +22,7 @@ public class findpassword extends AppCompatActivity {
     EditText email,phone, valiCode,newpass;
     private Button bt_next;
     private Button bt_yanzhengma;
-    private String myemail,myphone,myvaliCode,result;
+    private String myemail,myphone,myvaliCode,result,mynewpass;
     //设置倒计时时间
     int count=60;
     Timer timer = new Timer();
@@ -64,7 +64,7 @@ public class findpassword extends AppCompatActivity {
         email=(EditText)findViewById(R.id.email);
         phone=(EditText)findViewById(R.id.phone);
         valiCode=(EditText)findViewById(R.id.valiCode);
-        //newpass=(EditText)findViewById(R.id.newpass);
+        newpass=(EditText)findViewById(R.id.newpass);
         bt_next= (Button) findViewById(R.id.bt_findpassword_next);
         bt_yanzhengma= (Button) findViewById(R.id.getvaliCode);
 
@@ -77,6 +77,7 @@ public class findpassword extends AppCompatActivity {
                     public void run() {
                         myvaliCode = valiCode.getText().toString().trim();
                         myemail = email.getText().toString().trim();
+                        mynewpass=newpass.getText().toString().trim();
                         result = myHttpConect.urlconnect_getpass(myemail, myvaliCode);
                     Log.v("验证码",myvaliCode);
                     Log.v("邮箱",myemail);

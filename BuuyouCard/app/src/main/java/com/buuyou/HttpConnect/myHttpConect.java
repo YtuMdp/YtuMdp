@@ -27,19 +27,14 @@ public class myHttpConect {
         return urlresult;
     }
     //根据验证码码登录后台
-    public static String urlconnect_getpass(String email, String valiCode) {
+    public static String urlconnect_updapass(String email, String valiCode,String newpassword,String valistr) {
 
-        String url=UrlPath.NET_API+UrlPath.getpassType+UrlPath.data+email+","+valiCode;
+        String url=UrlPath.NET_API+UrlPath.updatapassType+UrlPath.data+email+","+valiCode+","+newpassword+","+2+","+valistr;
         String urlresult=HttpResult(url);
         return urlresult;
     }
-    //根据验证码码登录后台
-    public static String urlconnect_updatapass(String email, String valiCode,String newpass) {
 
-        String url=UrlPath.NET_API+UrlPath.updatapassType+UrlPath.data+email+","+valiCode+","+newpass+2;
-        String urlresult=HttpResult(url);
-        return urlresult;
-    }
+
 //连接服务器
     public static String HttpResult(String url) {
         String httpresult="";

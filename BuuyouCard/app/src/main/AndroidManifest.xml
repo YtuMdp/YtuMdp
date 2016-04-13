@@ -20,8 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name="com.buuyou.main.findpassword"></activity>
-        <activity android:name="com.buuyou.main.securitycode"></activity>
-        <activity android:name="com.buuyou.main.changepassword"></activity>
         <activity android:name="com.buuyou.fragment.BlankFragment"></activity>
     </application>
 

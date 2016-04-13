@@ -1,10 +1,12 @@
 package com.buuyou.main;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +24,8 @@ public class findpassword extends AppCompatActivity {
     EditText email,phone, valiCode,newpass;
     private Button bt_next;
     private Button bt_yanzhengma;
-    private String myemail,myphone,myvaliCode,result,mynewpass;
+    private String myemail,myphone,myvaliCode,result,mynewpass,result_data,getdata;
+    SharedPreferences sp;
     //设置倒计时时间
     int count=60;
     Timer timer = new Timer();
@@ -38,19 +41,37 @@ public class findpassword extends AppCompatActivity {
                     timer.cancel();
                     bt_yanzhengma.setClickable(true);
                     bt_yanzhengma.setText("重新获取");
-                    count=30;break;
+                    count=30;
+                    break;
                 case 2:
                     try {
                         JSONObject json=new JSONObject(result);
                         String status=json.getString("status");
                         if (status.equals("1")){
-                            Toast.makeText(findpassword.this,"登陆后台成功",Toast.LENGTH_SHORT).show();
+                            //修改密码成功，跳转到登录界面
+                            SharedPreferences.Editor editor=sp.edit();
+                            editor.putBoolean("isboolean", true);
+                            editor.commit();
+                            Intent intent=new Intent(findpassword.this, Mylogin.class);
+                            startActivity(intent);
                         }else if(status.equals("0")){
-                            Toast.makeText(findpassword.this,"登陆后台失败",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(findpassword.this,"修改密码失败",Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+                    break;
+                case 3:
+                    try {
+                        JSONObject json=new JSONObject(result_data);
+                        String status=json.getString("status");
+                        if (status.equals("1")){
+                          getdata=json.getString("data");
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
 
             }
         }
@@ -61,6 +82,7 @@ public class findpassword extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.findpassword);
+        sp=getSharedPreferences("data", Context.MODE_PRIVATE);
         email=(EditText)findViewById(R.id.email);
         phone=(EditText)findViewById(R.id.phone);
         valiCode=(EditText)findViewById(R.id.valiCode);
@@ -78,10 +100,7 @@ public class findpassword extends AppCompatActivity {
                         myvaliCode = valiCode.getText().toString().trim();
                         myemail = email.getText().toString().trim();
                         mynewpass=newpass.getText().toString().trim();
-                        result = myHttpConect.urlconnect_getpass(myemail, myvaliCode);
-                    Log.v("验证码",myvaliCode);
-                    Log.v("邮箱",myemail);
-                    Log.v("返回数据",result);
+                        result = myHttpConect.urlconnect_updapass(myemail, myvaliCode, mynewpass, getdata);
                         handler.sendEmptyMessage(2);
                    }
                 }).start();
@@ -108,8 +127,8 @@ public class findpassword extends AppCompatActivity {
                     public void run() {
                         myphone = phone.getText().toString().trim();
                         myemail = email.getText().toString().trim();
-                       String data= myHttpConect.urlconnect_pass(myemail, myphone);
-                        Log.v("mydata",data);
+                       result_data= myHttpConect.urlconnect_pass(myemail, myphone);
+                        handler.sendEmptyMessage(3);
                     }
                 }).start();
                 /**

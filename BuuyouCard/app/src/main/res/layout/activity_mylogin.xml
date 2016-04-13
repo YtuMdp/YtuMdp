@@ -51,7 +51,6 @@
         android:background="@drawable/shape"
         android:hint="@string/phone"
         android:padding="10dp"
-        android:textColor="@color/textcolor"
         />
 </LinearLayout>
      <!--密码输入框-->
@@ -75,7 +74,6 @@
             android:inputType="textPassword"
            android:background="@drawable/shape"
             android:padding="10dp"
-            android:textColor="@color/textcolor"
             />
 
     </LinearLayout>

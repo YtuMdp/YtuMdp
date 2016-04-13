@@ -87,7 +87,6 @@ public class Mylogin extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
     }
 
 
@@ -104,10 +103,6 @@ public class Mylogin extends AppCompatActivity {
                 //输入的账号和密码
                 myphone = phone.getText().toString().trim();
                 final String mypass=pass.getText().toString().trim();
-                SharedPreferences.Editor editor=sp.edit();
-                //将账号保存到SharedPreferences中
-                editor.putString("phone",myphone);
-                editor.commit();
                 //判断账号格式是否正确 如果错误给出提示
                 if (TextUtils.isEmpty(myphone)||TextUtils.isEmpty(mypass)){
                     Toast.makeText(Mylogin.this,"请输入正确账号或密码!",Toast.LENGTH_SHORT).show();
@@ -120,14 +115,12 @@ public class Mylogin extends AppCompatActivity {
                     public void run() {
                         //调用myHttpConect的urlconnect方法
                         result_data= myHttpConect.urlconnect(myphone, mypass);
-                      //  Log.v("info",result_data);
                         handler.sendEmptyMessage(3);
                     }
                 }).start();
                 }
             }
         });
-
         findpassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,7 +128,6 @@ public class Mylogin extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 

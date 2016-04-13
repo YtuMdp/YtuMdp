@@ -19,9 +19,24 @@ public class myHttpConect {
         String urlresult=HttpResult(url);
         return urlresult;
     }
+    //得到验证码
     public static String urlconnect_pass(String email, String phone) {
 
         String url=UrlPath.NET_API+UrlPath.passType+UrlPath.data+email+","+phone;
+        String urlresult=HttpResult(url);
+        return urlresult;
+    }
+    //根据验证码码登录后台
+    public static String urlconnect_getpass(String email, String valiCode) {
+
+        String url=UrlPath.NET_API+UrlPath.getpassType+UrlPath.data+email+","+valiCode;
+        String urlresult=HttpResult(url);
+        return urlresult;
+    }
+    //根据验证码码登录后台
+    public static String urlconnect_updatapass(String email, String valiCode,String newpass) {
+
+        String url=UrlPath.NET_API+UrlPath.updatapassType+UrlPath.data+email+","+valiCode+","+newpass+2;
         String urlresult=HttpResult(url);
         return urlresult;
     }

@@ -13,10 +13,13 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.buuyou.MineSbu.AboutBouu;
 import com.buuyou.MineSbu.AccountInfo;
 import com.buuyou.MineSbu.BasicInfo;
+import com.buuyou.MineSbu.ChannelRate;
 import com.buuyou.MineSbu.LoginLog;
 import com.buuyou.MineSbu.SecurityCen;
+import com.buuyou.MineSbu.Updata;
 import com.buuyou.buuyoucard.R;
 import com.buuyou.main.Mylogin;
 import com.buuyou.main.findpassword;
@@ -93,6 +96,16 @@ public class mineFragment extends Fragment implements View.OnClickListener{
         changepass.setOnClickListener((View.OnClickListener) this);
         LinearLayout loginlog= (LinearLayout)view.findViewById(R.id.loginlog);
         loginlog.setOnClickListener(this);
+
+        LinearLayout channel= (LinearLayout)view.findViewById(R.id.channel);
+        channel.setOnClickListener(this);
+
+        LinearLayout about= (LinearLayout)view.findViewById(R.id.about);
+        about.setOnClickListener(this);
+
+        LinearLayout updata= (LinearLayout)view.findViewById(R.id.updata);
+        updata.setOnClickListener(this);
+
         exit=(Button)view.findViewById(R.id.exit);
         tv_fragmentmine_id.setText("ID:" + sp.getString("userid", null));
         tv_fragmentmine_pwd.setText("密钥:" + sp.getString("checkCode", null));
@@ -160,6 +173,18 @@ public class mineFragment extends Fragment implements View.OnClickListener{
             case R.id.loginlog :
                 Intent intent5=new Intent(getActivity(),LoginLog.class);
                 startActivity(intent5);
+                break;
+            case R.id.channel :
+                Intent intent6=new Intent(getActivity(),ChannelRate.class);
+                startActivity(intent6);
+                break;
+            case R.id.about :
+                Intent intent7=new Intent(getActivity(),AboutBouu.class);
+                startActivity(intent7);
+                break;
+            case R.id.updata :
+                Intent intent8=new Intent(getActivity(),Updata.class);
+                startActivity(intent8);
                 break;
         }
     }

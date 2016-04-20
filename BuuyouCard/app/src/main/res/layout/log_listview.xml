@@ -4,7 +4,6 @@
     android:layout_height="61dp"
     android:background="#ffffff"
     android:layout_marginTop="1dp"
-    android:gravity="center_vertical"
    >
 
     <ImageView
@@ -13,7 +12,7 @@
         android:layout_height="30dp"
         android:src="@mipmap/computer"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
+       android:layout_centerVertical="true"
         />
     <TextView
         android:layout_marginTop="7dp"

@@ -27,7 +27,10 @@
         <activity android:name="com.buuyou.MineSbu.SecurityCen" />
         <activity android:name="com.buuyou.MineSbu.ChangeSn" />
         <activity android:name="com.buuyou.MineSbu.Authentication" />
-        <activity android:name="com.buuyou.MineSbu.LoginLog"></activity>
+        <activity android:name="com.buuyou.MineSbu.LoginLog" />
+        <activity android:name="com.buuyou.MineSbu.AboutBouu" />
+        <activity android:name="com.buuyou.MineSbu.Updata" />
+        <activity android:name="com.buuyou.MineSbu.ChannelRate"></activity>
     </application>
 
 </manifest>

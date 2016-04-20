@@ -221,6 +221,7 @@
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/channel"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
@@ -253,6 +254,7 @@
         android:orientation="horizontal"
         >
         <LinearLayout
+            android:id="@+id/about"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
@@ -273,6 +275,7 @@
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/updata"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"

@@ -17,9 +17,10 @@
     >
     <ImageView
         android:id="@+id/img"
-        android:layout_width="86pt"
-        android:layout_height="75pt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@mipmap/logo"
+        android:layout_centerHorizontal="true"
         />
     <ImageView
         android:layout_below="@id/img"

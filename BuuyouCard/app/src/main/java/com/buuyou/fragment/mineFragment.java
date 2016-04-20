@@ -10,10 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.buuyou.MineSbu.AccountInfo;
+import com.buuyou.MineSbu.BasicInfo;
+import com.buuyou.MineSbu.LoginLog;
+import com.buuyou.MineSbu.SecurityCen;
 import com.buuyou.buuyoucard.R;
 import com.buuyou.main.Mylogin;
+import com.buuyou.main.findpassword;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,7 +29,7 @@ import com.buuyou.main.Mylogin;
  * Use the {@link mineFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class mineFragment extends Fragment {
+public class mineFragment extends Fragment implements View.OnClickListener{
     TextView tv_fragmentmine_id,tv_fragmentmine_pwd;
     Button exit;
     SharedPreferences sp;
@@ -77,21 +83,36 @@ public class mineFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_mine, container, false);
         tv_fragmentmine_id=(TextView)view.findViewById(R.id.tv_fragmentmine_id);
         tv_fragmentmine_pwd=(TextView)view.findViewById(R.id.tv_fragmentmine_pwd);
+        LinearLayout info=(LinearLayout)view.findViewById(R.id.info);
+        info.setOnClickListener((View.OnClickListener) this);
+        LinearLayout account_info=(LinearLayout)view.findViewById(R.id.account_info);
+        account_info.setOnClickListener((View.OnClickListener) this);
+        LinearLayout safenum=(LinearLayout)view.findViewById(R.id.safenum);
+        safenum.setOnClickListener((View.OnClickListener) this);
+        LinearLayout changepass=(LinearLayout)view.findViewById(R.id.changepass);
+        changepass.setOnClickListener((View.OnClickListener) this);
+        LinearLayout loginlog= (LinearLayout)view.findViewById(R.id.loginlog);
+        loginlog.setOnClickListener(this);
         exit=(Button)view.findViewById(R.id.exit);
-        tv_fragmentmine_id.setText("ID:"+sp.getString("userid",null));
-        tv_fragmentmine_pwd.setText("密钥:"+sp.getString("checkCode",null));
+        tv_fragmentmine_id.setText("ID:" + sp.getString("userid", null));
+        tv_fragmentmine_pwd.setText("密钥:" + sp.getString("checkCode", null));
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor=sp.edit();
+                SharedPreferences.Editor editor = sp.edit();
                 editor.putBoolean("isboolean", true);
                 editor.commit();
-                Intent intent=new Intent(getActivity().getApplication(), Mylogin.class);
+                Intent intent = new Intent(getActivity().getApplication(), Mylogin.class);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
+
         return view;
     }
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -115,6 +136,32 @@ public class mineFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.info :
+                Intent intent=new Intent(getActivity(), BasicInfo.class);
+                startActivity(intent);
+                break;
+            case R.id.account_info :
+                Intent intent2=new Intent(getActivity(), AccountInfo.class);
+                startActivity(intent2);
+                break;
+            case R.id.safenum :
+                Intent intent3=new Intent(getActivity(), SecurityCen.class);
+                startActivity(intent3);
+                break;
+            case R.id.changepass :
+                Intent intent4=new Intent(getActivity(),findpassword.class);
+                startActivity(intent4);
+                break;
+            case R.id.loginlog :
+                Intent intent5=new Intent(getActivity(),LoginLog.class);
+                startActivity(intent5);
+                break;
+        }
     }
 
     /**

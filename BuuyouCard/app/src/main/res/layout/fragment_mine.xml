@@ -91,6 +91,7 @@
         android:layout_marginTop="10dp"
         >
         <LinearLayout
+            android:id="@+id/info"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
@@ -111,6 +112,7 @@
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/account_info"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
@@ -144,6 +146,7 @@
 
         >
         <LinearLayout
+            android:id="@+id/safenum"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
@@ -164,6 +167,7 @@
                 android:layout_marginLeft="10dp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/changepass"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"
@@ -196,6 +200,7 @@
         android:orientation="horizontal"
         >
         <LinearLayout
+            android:id="@+id/loginlog"
             android:layout_width="0dp"
             android:layout_height="68dp"
             android:layout_weight="1"

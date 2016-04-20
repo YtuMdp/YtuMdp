@@ -3,8 +3,7 @@
     package="com.buuyou.buuyoucard">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_SMS"></uses-permission>
-
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application
         android:allowBackup="true"
@@ -19,8 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.buuyou.main.findpassword"></activity>
-        <activity android:name="com.buuyou.fragment.BlankFragment"></activity>
+        <activity android:name="com.buuyou.main.findpassword" />
+        <activity android:name="com.buuyou.fragment.BlankFragment" />
+        <activity android:name="com.buuyou.MineSbu.BasicInfo" />
+        <activity android:name="com.buuyou.MineSbu.ExchangeEmail" />
+        <activity android:name="com.buuyou.MineSbu.ExchangePhone" />
+        <activity android:name="com.buuyou.MineSbu.AccountInfo" />
+        <activity android:name="com.buuyou.MineSbu.SecurityCen" />
+        <activity android:name="com.buuyou.MineSbu.ChangeSn" />
+        <activity android:name="com.buuyou.MineSbu.Authentication" />
+        <activity android:name="com.buuyou.MineSbu.LoginLog"></activity>
     </application>
 
 </manifest>

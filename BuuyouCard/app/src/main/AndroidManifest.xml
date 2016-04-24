@@ -30,7 +30,9 @@
         <activity android:name="com.buuyou.MineSbu.LoginLog" />
         <activity android:name="com.buuyou.MineSbu.AboutBouu" />
         <activity android:name="com.buuyou.MineSbu.Updata" />
-        <activity android:name="com.buuyou.MineSbu.ChannelRate"></activity>
+        <activity android:name="com.buuyou.MineSbu.ChannelRate" />
+        <activity android:name="com.buuyou.MineSbu.ChangePass" />
+        <activity android:name="com.buuyou.notice.NoticeWeb"></activity>
     </application>
 
 </manifest>

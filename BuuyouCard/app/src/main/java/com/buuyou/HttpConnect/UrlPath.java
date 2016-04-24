@@ -8,5 +8,7 @@ public class UrlPath {
     public final  static String loginType="userlogin";
     public final  static String passType="userpwd";
     public final  static String updatapassType="userupdpwd";
+    public final  static String channelType="channelrate";
+    public final  static String noticeType="buuyou";
     public  final static String data="&data=";
 }

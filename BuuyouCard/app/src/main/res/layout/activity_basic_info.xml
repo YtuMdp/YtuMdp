@@ -56,6 +56,7 @@
             android:layout_marginLeft="15dp"
             />
   <TextView
+      android:id="@+id/id"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="(商户ID}"
@@ -80,12 +81,12 @@
             android:layout_marginLeft="15dp"
             />
         <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(66666}"
             android:textSize="15sp"
             android:layout_marginLeft="49dp"
-
             />
     </LinearLayout>
     <RelativeLayout
@@ -106,6 +107,7 @@
             android:layout_marginLeft="15dp"
             />
         <TextView
+            android:id="@+id/myeamil"
             android:layout_toRightOf="@id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,6 +141,7 @@
             android:layout_marginLeft="15dp"
             />
         <TextView
+            android:id="@+id/myphone"
             android:layout_toRightOf="@id/phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -170,12 +173,12 @@
             android:layout_marginLeft="15dp"
             />
         <TextView
+            android:id="@+id/QQ"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(66666666}"
             android:textSize="18sp"
             android:layout_marginLeft="49dp"
-
             />
     </LinearLayout>
     <LinearLayout

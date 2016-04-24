@@ -80,7 +80,7 @@ public class mineFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         sp=getActivity().getSharedPreferences("data",Context.MODE_PRIVATE);
         View view=inflater.inflate(R.layout.fragment_mine, container, false);
@@ -105,6 +105,7 @@ public class mineFragment extends Fragment implements View.OnClickListener{
 
         LinearLayout updata= (LinearLayout)view.findViewById(R.id.updata);
         updata.setOnClickListener(this);
+
 
         exit=(Button)view.findViewById(R.id.exit);
         tv_fragmentmine_id.setText("ID:" + sp.getString("userid", null));

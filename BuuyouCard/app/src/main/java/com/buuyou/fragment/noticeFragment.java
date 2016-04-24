@@ -2,13 +2,31 @@ package com.buuyou.fragment;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import com.buuyou.HttpConnect.myHttpConect;
 import com.buuyou.buuyoucard.R;
+import com.buuyou.notice.NoticeWeb;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 /**
@@ -20,6 +38,11 @@ import com.buuyou.buuyoucard.R;
  * create an instance of this fragment.
  */
 public class noticeFragment extends Fragment {
+    TextView title,time,titletime;
+    ImageView imageView;
+    RelativeLayout relativeLayout;
+    String mytitle,mytime,myreade,myimage;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,6 +57,72 @@ public class noticeFragment extends Fragment {
     public noticeFragment() {
         // Required empty public constructor
     }
+
+    Handler handler=new Handler(){
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what){
+
+                case 0:
+                    String result_data= (String) msg.obj;
+                    try {
+                        JSONObject json=new JSONObject(result_data);
+                        String status=json.getString("status");
+                        if (status.equals("1")){
+                            JSONArray myarray=json.getJSONArray("data");
+                            for (int i=0;i<myarray.length();i++){
+                                mytitle=myarray.getJSONObject(i).getString("title");
+                                mytime=myarray.getJSONObject(i).getString("datatime");
+                                myimage=myarray.getJSONObject(i).getString("picpath");
+                                myreade=myarray.getJSONObject(i).getString("website");
+                            }
+                            title.setText(mytitle);
+                            time.setText(mytime);
+                            titletime.setText(mytime);
+                            new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    String path="https://www.buuyou.com"+myimage;
+                                    try {
+                                        URL ul = new URL(path);
+                                        HttpURLConnection connection = (HttpURLConnection) ul.openConnection();
+                                        connection.setConnectTimeout(3000);
+                                        connection.setRequestMethod("GET");
+                                        connection.setDoInput(true);
+                                        int code = connection.getResponseCode();
+                                        if (code == 200) {
+                                            InputStream in = connection.getInputStream();
+                                            Message msg=Message.obtain();
+                                            msg.obj= BitmapFactory.decodeStream(in);
+                                            msg.what=1;
+                                            handler.sendMessage(msg);
+                                            in.close();
+                                        }
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                               }
+                            }).start();
+
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 1:
+                    Bitmap bitmap= (Bitmap) msg.obj;
+                    imageView.setImageBitmap(bitmap);
+                    break;
+            }
+
+        }
+    };
+
+
 
     /**
      * Use this factory method to create a new instance of
@@ -66,7 +155,38 @@ public class noticeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notice, container, false);
+        View view=inflater.inflate(R.layout.fragment_notice, container, false);
+        title= (TextView) view.findViewById(R.id.title);
+        time= (TextView) view.findViewById(R.id.time);
+        titletime= (TextView) view.findViewById(R.id.titletime);
+        imageView= (ImageView) view.findViewById(R.id.image);
+        relativeLayout= (RelativeLayout) view.findViewById(R.id.read);
+        //连接公告后台
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String data ="sss";
+                String result= myHttpConect.urlconnect_notice(data, data);
+                Log.v("++++++++++", result);
+                Message msg=Message.obtain();
+                msg.obj=result;
+                msg.what=0;
+                handler.sendMessage(msg);
+            }
+        }).start();
+       //获取公告图片
+
+
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // Toast.makeText(getActivity(),myreade,Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(getActivity(), NoticeWeb.class);
+                intent.putExtra("path",myreade);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

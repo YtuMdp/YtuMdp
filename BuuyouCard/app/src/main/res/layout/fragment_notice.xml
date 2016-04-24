@@ -37,6 +37,7 @@
         android:layout_height="37dp"
         android:gravity="center">
         <TextView
+           android:id="@+id/titletime"
             android:layout_width="65dp"
             android:layout_height="18dp"
             android:text="（推送时间）"
@@ -54,6 +55,7 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp">
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="布优销卡V1.0版本更新说明"
@@ -62,28 +64,26 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"/>
         <TextView
+            android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2016-03-30(推送日期)"
+            android:text="2016-03-30"
             android:textColor="#8F8F8F"
             android:textSize="12dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="24dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="176dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="#F5F3F0">
-            <TextView
+
+            <ImageView
+                android:id="@+id/image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="（推送内容）"
+                android:layout_height="176dp"
+                android:layout_marginTop="23dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#F5F3F0"
                 android:gravity="center"
-                android:textSize="15dp"
                 />
-        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -93,6 +93,7 @@
             android:background="#EAEAEA">
         </LinearLayout>
         <RelativeLayout
+            android:id="@+id/read"
             android:layout_width="match_parent"
             android:layout_height="17dp"
             android:layout_marginTop="18dp">

@@ -34,6 +34,21 @@ public class myHttpConect {
         return urlresult;
     }
 
+//连接后台通道费率
+public static String urlconnect_channel(String email, String pass) {
+
+    String url=UrlPath.NET_API+UrlPath.channelType+UrlPath.data+email+","+pass;
+    String urlresult=HttpResult(url);
+    return urlresult;
+}
+//连接公告后台
+public static String urlconnect_notice(String email, String pass) {
+
+    String url=UrlPath.NET_API+UrlPath.noticeType+UrlPath.data+email+","+pass;
+    String urlresult=HttpResult(url);
+    return urlresult;
+}
+
 
 //连接服务器
     public static String HttpResult(String url) {
@@ -54,6 +69,7 @@ public class myHttpConect {
         }
         return httpresult;
     }
+
 //读入数据
    public static String HttpBuff(InputStream in) {
        String buffresult="";

@@ -28,7 +28,7 @@ public class Mylogin extends AppCompatActivity {
     TextView findpassword;
     String result_data;
     SharedPreferences sp;
-    private String myphone;
+
     Handler handler=new Handler() {
         public  void handleMessage(Message msg){
       switch (msg.what) {
@@ -48,12 +48,13 @@ public class Mylogin extends AppCompatActivity {
 
                   for (int i=0;i<data.length();i++){
                       JSONObject temp = (JSONObject) data.get(i);
-                      String userid=temp.getString("Userid");
-                      String checkCode=temp.getString("CheckCode");
-                      String lastTimes=temp.getString("LastTimes");
-                      editor.putString("userid",userid);
-                      editor.putString("checkCode",checkCode);
-                      editor.putString("lastTimes", lastTimes);
+                      editor.putString("userid",temp.getString("Userid"));
+                      editor.putString("checkCode",temp.getString("CheckCode"));
+                      editor.putString("lastTimes", temp.getString("LastTimes"));
+                      editor.putString("userRealName", (String) temp.get("UserRealName"));
+                      editor.putString("QQ",(String) temp.get("MsnQQ"));
+                      editor.putString("tel", (String) temp.get("RealTel"));
+                      editor.putString("email", (String) temp.get("Email"));
                       editor.commit();
                   }
                   finish();
@@ -101,8 +102,12 @@ public class Mylogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //输入的账号和密码
-                myphone = phone.getText().toString().trim();
+                final  String  myphone = phone.getText().toString().trim();
                 final String mypass=pass.getText().toString().trim();
+                SharedPreferences.Editor editor=sp.edit();
+                editor.putString("email",myphone);
+                editor.putString("pass",mypass);
+                editor.commit();
                 //判断账号格式是否正确 如果错误给出提示
                 if (TextUtils.isEmpty(myphone)||TextUtils.isEmpty(mypass)){
                     Toast.makeText(Mylogin.this,"请输入正确账号或密码!",Toast.LENGTH_SHORT).show();

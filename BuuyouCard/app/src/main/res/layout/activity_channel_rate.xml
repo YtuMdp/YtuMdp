@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context="com.buuyou.MineSbu.ChannelRate"
     android:background="#F5F3F0"
     android:orientation="vertical"
@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="通道名称"
+        android:text="费率"
         android:textSize="18sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
@@ -32,9 +32,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="通道名称"
+        android:text="通道状态"
         android:textSize="18sp"
-       android:layout_alignParentRight="true"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="10dp"
         />
@@ -43,7 +43,7 @@
         android:layout_marginTop="8dp"
         android:id="@+id/listview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
     </ListView>
 </LinearLayout>
